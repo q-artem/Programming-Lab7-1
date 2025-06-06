@@ -4,7 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 
 public class PasswordHasher {
-    private static final String PEPPER = "goida";
+    private static final String PEPPER = "test";
     private static final int SALT_LENGTH = 16;
 
     public static class HashedPassword {

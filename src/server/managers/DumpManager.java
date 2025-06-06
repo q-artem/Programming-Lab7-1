@@ -15,6 +15,7 @@ import server.utils.ServerLogger;
 public class DumpManager {
     private final String fileName;
     private static final Logger logger = ServerLogger.getInstance();
+    private static final DataBaseManager dbManager = new DataBaseManager(new DataBaseConnection());
 
     /**
      * Конструктор менеджера дампа.

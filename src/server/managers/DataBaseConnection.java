@@ -5,7 +5,7 @@ import java.util.logging.*;
 
 public class DataBaseConnection {
     private final String URL = "jdbc:postgresql://pg/studs";
-    private final String my_login = "s467530";
+    private final String my_login = "s467205";
     private final String my_password = "Gc7uKesSiK7P4lVW";
     private static final Logger LOGGER = Logger.getLogger(DataBaseConnection.class.getName());
 
