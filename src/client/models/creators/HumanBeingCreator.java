@@ -29,7 +29,7 @@ public class HumanBeingCreator {
      * @param id      идентификатор (может быть null для автогенерации)
      * @return созданный объект HumanBeing
      */
-    public static HumanBeing createHumanBeing(Console console, Integer id) {
+    public static HumanBeing createHumanBeing(Console console, Integer id, String owner) {
         console.println("Инициализировано создание Персонажа (HumanBeing)");
         HumanBeing.Builder builder;
         if (id != null) {
@@ -46,7 +46,7 @@ public class HumanBeingCreator {
                 .minutesOfWaiting(askMinutesOfWaiting(console))
                 .weaponType(askWeaponType(console))
                 .car(CarCreator.createCar(console));
-        return builder.build();
+        return builder.build(owner);
     }
 
     /**

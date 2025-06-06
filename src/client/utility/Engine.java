@@ -4,6 +4,7 @@ import client.commands.*;
 import client.managers.CollectionManager;
 import client.managers.CommandManager;
 import client.managers.DumpManager;
+import client.managers.UserManager;
 import client.server.Client;
 import common.utility.Console;
 import common.utility.StandartConsole;
@@ -15,7 +16,8 @@ public class Engine {
         Console console = new StandartConsole();
 
         var localClient = new Client();
-        var dumpManager = new DumpManager(console, localClient);
+        var userManager = new UserManager("users.dat");
+        var dumpManager = new DumpManager(console, localClient, owner);
         var collectionManager = new CollectionManager(dumpManager);
         if (!collectionManager.loadCollection()) {
             System.exit(1);

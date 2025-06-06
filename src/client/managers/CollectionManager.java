@@ -29,6 +29,10 @@ public class CollectionManager {
         this.dumpManager = dumpManager;
     }
 
+    public String getOwner() {
+        return dumpManager.getOwner();
+    }
+
     /**
      * Возвращает время последней инициализации коллекции.
      *

@@ -49,7 +49,7 @@ public class ReplaceIfGreater extends Command implements Executable, Describable
             if (oldHuman == null) {
                 return new ExecutionResponse(false, "Элемент с таким ключом не найден!");
             }
-            HumanBeing newHuman = HumanBeingCreator.createHumanBeing(console, null);
+            HumanBeing newHuman = HumanBeingCreator.createHumanBeing(console, null, collectionManager.getOwner());
             if (newHuman != null && newHuman.validate()) {
                 if (compareHumanBeings(newHuman, oldHuman)) {
                     if (collectionManager.update(newHuman)) {

@@ -51,7 +51,7 @@ public class Update extends Command implements Executable, Describable {
                 return new ExecutionResponse(false, "Элемента с таким ключом не существует!");
             }
 
-            HumanBeing humanBeing = HumanBeingCreator.createHumanBeing(console, key);
+            HumanBeing humanBeing = HumanBeingCreator.createHumanBeing(console, key, collectionManager.getOwner());
 
             if (humanBeing != null && humanBeing.validate()) {
                 if (collectionManager.update(humanBeing)) {

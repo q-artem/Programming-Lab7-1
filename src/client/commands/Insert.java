@@ -51,7 +51,7 @@ public class Insert extends Command implements Executable, Describable {
                 return new ExecutionResponse(false, "Элемент с таким ключом уже существует!");
             }
 
-            HumanBeing humanBeing = HumanBeingCreator.createHumanBeing(console, key);
+            HumanBeing humanBeing = HumanBeingCreator.createHumanBeing(console, key, collectionManager.getOwner());
 
             if (humanBeing != null && humanBeing.validate()) {
                 collectionManager.getCollection().put(key, humanBeing);

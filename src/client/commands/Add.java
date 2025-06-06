@@ -38,12 +38,11 @@ public class Add extends Command implements Executable, Describable {
      * @return результат выполнения команды ({@link ExecutionResponse})
      * с сообщением об успешности операции
      */
-    @Override
     public ExecutionResponse apply(String[] argument) {
         if (!argument[1].isEmpty())
             return new ExecutionResponse(false, "Неправильное количество аргументов!\nИспользование: '" + getName() + "'");
 
-        HumanBeing humanBeing = HumanBeingCreator.createHumanBeing(console, null);
+        HumanBeing humanBeing = HumanBeingCreator.createHumanBeing(console, null, collectionManager.getOwner());
 
         if (humanBeing != null && humanBeing.validate()) {
             if (collectionManager.add(humanBeing)) {

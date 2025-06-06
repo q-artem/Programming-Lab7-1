@@ -29,6 +29,7 @@ import java.util.TreeMap;
 public class DumpManager {
     private final Console console;
     private final Client client;
+    private final String owner;
 
     /**
      * Конструктор менеджера дампа.
@@ -36,9 +37,14 @@ public class DumpManager {
      * @param console      консоль для вывода сообщений об ошибках и информации
      * @param client менеджер для отправки запросов на сервер
      */
-    public DumpManager(Console console, Client client) {
+    public DumpManager(Console console, Client client, String owner) {
+        this.owner = owner;
         this.console = console;
         this.client = client;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 
     /**
@@ -160,7 +166,7 @@ public class DumpManager {
                             .minutesOfWaiting(minutesOfWaiting)
                             .weaponType(weaponType)
                             .car(car)
-                            .build();
+                            .build(owner);
 
                     collection.put(id, human);
                 } catch (Exception e) {

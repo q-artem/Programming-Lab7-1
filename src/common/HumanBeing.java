@@ -17,6 +17,7 @@ import java.util.Objects;
  */
 public class HumanBeing extends Element implements Validatable {
     private final Integer id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private String owner;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private final LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -31,9 +32,10 @@ public class HumanBeing extends Element implements Validatable {
     /**
      * Конструктор по умолчанию. Автоматически генерирует id и дату создания.
      */
-    public HumanBeing() {
+    public HumanBeing(String owner) {
         this.id = IdGenerator.assignHumanBeingId();
         this.creationDate = LocalDate.now();
+        this.owner = owner;
     }
 
     /**
@@ -42,9 +44,10 @@ public class HumanBeing extends Element implements Validatable {
      * @param id   идентификатор
      * @param date дата создания
      */
-    public HumanBeing(Integer id, LocalDate date) {
+    public HumanBeing(Integer id, LocalDate date, String owner) {
         this.id = id;
         this.creationDate = date;
+        this.owner = owner;
     }
 
     /**
@@ -462,12 +465,12 @@ public class HumanBeing extends Element implements Validatable {
          *
          * @return новый экземпляр HumanBeing
          */
-        public HumanBeing build() {
+        public HumanBeing build(String owner) {
             HumanBeing humanBeing;
             if (loadedFromFile) {
-                humanBeing = new HumanBeing(id, date);
+                humanBeing = new HumanBeing(id, date, owner);
             } else {
-                humanBeing = new HumanBeing();
+                humanBeing = new HumanBeing(owner);
             }
             humanBeing.name = this.name;
             humanBeing.coordinates = this.coordinates;
