@@ -20,6 +20,7 @@ public class Main {
      * @param args аргументы командной строки (args[0] — имя файла с коллекцией)
      */
     public static void main(String[] args) {
+
         try {
             Engine engine = new Engine();
             engine.run();

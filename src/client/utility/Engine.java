@@ -14,10 +14,26 @@ import java.io.IOException;
 public class Engine {
     public void run() throws IOException {
         Console console = new StandartConsole();
-
         var localClient = new Client();
         var userManager = new UserManager("users.dat");
-        var dumpManager = new DumpManager(console, localClient, owner);
+        userManager.createUser("admin", "admin");
+
+        // Authenticate user before proceeding
+        String username = "";
+        boolean authenticated = false;
+        while (!authenticated) {
+            username = console.getUserValueString("Введите имя пользователя:");
+            String password = console.getUserValueString("Введите пароль:");
+
+            if (userManager.authenticate(username, password, "1")) {
+                authenticated = true;
+                console.println("Аутентификация успешна!");
+            } else {
+                console.println("Неверные имя пользователя или пароль. Попробуйте снова.");
+            }
+        }
+
+        var dumpManager = new DumpManager(console, localClient, username);
         var collectionManager = new CollectionManager(dumpManager);
         if (!collectionManager.loadCollection()) {
             System.exit(1);

@@ -4,6 +4,7 @@ import common.utility.Element;
 import common.utility.Validatable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -48,6 +49,10 @@ public class HumanBeing extends Element implements Validatable {
         this.id = id;
         this.creationDate = date;
         this.owner = owner;
+    }
+
+    public HumanBeing(int id, String name, Coordinates coordinates, LocalDateTime creationDate, double annualTurnover, String fullName, long employeesCount, int userId) {
+        super();
     }
 
     /**
