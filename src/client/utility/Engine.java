@@ -18,7 +18,6 @@ public class Engine {
         var userManager = new UserManager("users.dat");
         userManager.createUser("admin", "admin");
 
-        // Authenticate user before proceeding
         String username = "";
         boolean authenticated = false;
         while (!authenticated) {

@@ -2,7 +2,7 @@ package server.managers;
 
 import common.Coordinates;
 import common.HumanBeing;
-import server.managers.PasswordHasher;
+
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
@@ -47,7 +47,7 @@ public class DataBaseManager {
         }
     }
 
-    public int getUserIdByOrganizationId(int orgId) throws SQLException {
+    public int getUserIdByHumanBeingId(int orgId) throws SQLException {
         String sql = "SELECT user_id FROM Organization WHERE id = ?";
         try (Connection conn = dbconnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -90,7 +90,7 @@ public class DataBaseManager {
     }
 
     public boolean hasAccess(int orgId, int userId) throws SQLException {
-        int orgUserId = getUserIdByOrganizationId(orgId);
+        int orgUserId = getUserIdByHumanBeingId(orgId);
         return orgUserId != -1 && orgUserId == userId;
     }
 
